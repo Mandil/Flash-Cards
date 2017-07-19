@@ -9,6 +9,20 @@
   </head>
 
   <body>
+    <h1>FlashCards</h1>
+    <% if @user %>
+    <h3>Welcome <%= @user.name %>!</h3>
+    <% end %>
+    <nav>
+      <%= link_to "home", root_path %>
+      <%= link_to "login", root_path %>
+      <%= link_to "register", new_user_path %>
+      <% if @user %>
+      <%= link_to "#{@user.name}", user_path(@user) %>
+      <%= link_to "logout", root_path %>
+      <% end %>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
