@@ -1,22 +1,24 @@
-<h1>New User</h1>
+<h3>Register</h3>
 
-<%= form_for :user, url: users_path do |f| %>
+<%= form_for :user, :html =>  {class: 'form-inline'}, url: users_path do |f| %>
   <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <div class="form-group">
+      <%= f.email_field :name, type: "text", class: "form-control", id: "exampleInputEmail1", placeholder: "name"%>
+    </div>
   </p>
 
   <p>
-    <%= f.label :email %><br>
-    <%= f.email_field :email %>
+    <div class="form-group">
+      <%= f.email_field :email, type: "email", class: "form-control", id: "exampleInputEmail1", placeholder: "email"%>
+    </div>
+  </p>
+  <p>
+    <div class="form-group">
+      <%= f.password_field :password, type: "password", class: "form-control", id: "exampleInputEmail1", placeholder: "password"%>
+    </div>
   </p>
 
   <p>
-    <%= f.label :password %><br>
-    <%= f.password_field(:password) %>
-  </p>
-
-  <p>
-    <%= f.submit %>
+    <%= f.submit 'sign up', :class => 'btn btn-primary', :name => 'sign up'%>
   </p>
 <% end %>

@@ -1,27 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html class="btn btn-primary">
   <head>
     <title>FlashCards</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'bootstrap-theme', media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <h1>FlashCards</h1>
+      <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <%= link_to "home", root_path, class: "navbar-brand" %>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to "login", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "register", new_user_path, class: "nav-link" %>
+        </li>
+      <% if @user %>
+      <li class="nav-item">
+        <%= link_to "profile", user_path(@user), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "logout", root_path, class: "nav-link" %>
+      </li>
+      <% end %>
+    </nav>
     <% if @user %>
     <h3>Welcome <%= @user.name %>!</h3>
     <% end %>
-    <nav>
-      <%= link_to "home", root_path %>
-      <%= link_to "login", root_path %>
-      <%= link_to "register", new_user_path %>
-      <% if @user %>
-      <%= link_to "#{@user.name}", user_path(@user) %>
-      <%= link_to "logout", root_path %>
-      <% end %>
-    </nav>
 
     <%= yield %>
   </body>
