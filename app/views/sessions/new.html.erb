@@ -1,2 +1,20 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h3>Login</h3>
+
+
+
+<%= form_for :user, :html =>  {class: 'form-inline'}, url: '/login' do |f| %>
+  <p>
+    <div class="form-group">
+      <%= f.email_field :email, type: "email", class: "form-control", id: "exampleInputEmail1", placeholder: "email"%>
+    </div>
+  </p>
+  <p>
+    <div class="form-group">
+      <%= f.password_field :password, type: "password", class: "form-control", id: "exampleInputEmail1", placeholder: "password"%>
+    </div>
+  </p>
+
+  <p>
+    <%= f.submit 'sign in', :class => 'btn btn-primary', :name => 'sign in'%>
+  </p>
+<% end %>
