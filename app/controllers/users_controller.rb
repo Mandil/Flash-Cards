@@ -7,17 +7,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    p user_params
     user = User.new(user_params)
     if user.save
-      session[:user_id] = user.id
-      flash[:notice] = 'user created'
-
-      redirect_to '/'
+      flash[:success] = "User successfully created..."
+      redirect_to login_path
     else
-      flash[:notice] = 'errors'
-
-      redirect_to '/signup'
+      flash[:notice] = "errors"
+      redirect_to signup_path
     end
   end
 
